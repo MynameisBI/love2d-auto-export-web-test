@@ -22,5 +22,5 @@ jobs:
               run: npm install -g love.js
               
             - name: Export Love2D project to web
-              run: love.js ./main ./web
+              run: love.js ./main ./web -t game -c
               
