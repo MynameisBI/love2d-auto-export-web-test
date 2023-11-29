@@ -1,0 +1,26 @@
+name: Export to Web
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    export:
+        runs-on: ubuntu-latest
+        
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v2
+            
+            - name: Set up Node.js
+              uses: actions/setup-node@v3
+              with:
+                node-version: 14
+                
+            - name: Install love.js
+              run: npm install -g love.js
+              
+            - name: Export Love2D project to web
+              run: love.js ./main ./web
+              
