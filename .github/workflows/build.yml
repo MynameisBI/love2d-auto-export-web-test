@@ -35,5 +35,7 @@ jobs:
               run: |
                 git config --global user.name 'Rumis'
                 git config --global user.email '56908557+MynameisBI@users.noreply.github.com'
+                cd main
+                git add .
                 git commit -m "Auto package web build on push" || true
                 git push
