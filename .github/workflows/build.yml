@@ -23,7 +23,7 @@ jobs:
                 
             - name: Install love.js
               run: npm install -g love.js
-            
+
             - name: Package a web build
               run: |
                 cd main
@@ -35,7 +35,8 @@ jobs:
               run: |
                 git config --global user.name 'Rumis'
                 git config --global user.email '56908557+MynameisBI@users.noreply.github.com'
-                cd main
                 git add .
+                cd main
+                
                 git commit -m "Auto package web build on push" || true
                 git push
