@@ -20,7 +20,19 @@ jobs:
                 
             - name: Install love.js
               run: npm install -g love.js
-              
-            - name: Export Love2D project to web
-              run: love.js ./main ./web -t "game" -c
+            
+            - name: Package a web build
+              run: |
+                cd main
+                zip -9 -r game.love .
+                cd ..
+                love.js ./main/game.love web -t "game" -c
+            
+            - name: Add, commit and push
+              run: |
+                cd web
+                git add .
+                git commit -m "Auto package web build on push" || true
+                git push
+
               
