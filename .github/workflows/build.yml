@@ -5,13 +5,16 @@ on:
         branches:
             - main
 
+permissions:
+    contents: write
+
 jobs:
     export:
         runs-on: ubuntu-latest
         
         steps:
             - name: Checkout repository
-              uses: actions/checkout@v2
+              uses: actions/checkout@v3
             
             - name: Set up Node.js
               uses: actions/setup-node@v3
@@ -27,12 +30,10 @@ jobs:
                 zip -9 -r game.love .
                 cd ..
                 love.js ./main/game.love web -t "game" -c
-            
-            - name: Add, commit and push
+
+            - name: Commit and push
               run: |
-                cd web
-                git add .
+                git config --global user.name 'Rumis'
+                git config --global user.email '56908557+MynameisBI@users.noreply.github.com'
                 git commit -m "Auto package web build on push" || true
                 git push
-
-              
